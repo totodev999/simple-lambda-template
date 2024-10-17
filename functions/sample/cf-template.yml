@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation for sample Lambda function
+
+Parameters:
+  FunctionName:
+    Type: String
+    Description: Name of the Lambda function
+  Role:
+    Type: String
+    Description: ARN of the IAM role for the Lambda function
+  S3Bucket:
+    Type: String
+    Description: Name of the S3 bucket
+  S3Key:
+    Type: String
+    Description: Key of the S3 object
+
+Resources:
+  SampleLambdaFunction:
+    Type: AWS::Lambda::Function
+    DeletionPolicy: Retain
+    Properties:
+      FunctionName: !Ref FunctionName
+      Description: Sample Lambda function
+      MemorySize: 128
+      Timeout: 10
+      Handler: index.handler
+      Runtime: nodejs20.x
+      # If you want to use aws cli to upload the zip file, you can write the following line
+      # Code: sample.zip
+      Code:
+        S3Bucket: !Ref S3Bucket
+        S3Key: !Ref S3Key
+      PackageType: Zip
+      Role: !Ref Role

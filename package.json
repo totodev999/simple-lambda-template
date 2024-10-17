@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -build",
-    "build:sample": "npm run build"
+    "bundle:sample": "esbuild functions/sample/handler.ts --bundle --outfile=./functions/sample/index.js --platform=node",
+    "zip:sample": "zip -j ./sample functions/sample/index.js && rm ./functions/sample/index.js",
+    "build:sample": "npm run build && npm run bundle:sample && npm run zip:sample"
   },
   "author": "",
   "license": "ISC",
