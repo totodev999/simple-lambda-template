@@ -1,0 +1,22 @@
+{
+  "name": "simple-lambda-template",
+  "version": "1.0.0",
+  "description": "simple lambda template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -build",
+    "build:sample": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "esbuild": "^0.24.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.6.3"
+  }
+}
